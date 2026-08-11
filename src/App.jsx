@@ -18,7 +18,7 @@ export default function App() {
         <Navbar />
         <main id="main" className="mt-16">
           <Hero />
-          <section aria-labelledby="gallery-title" className="py-12">
+          <section id="gallery" aria-labelledby="gallery-title" className="py-12">
             <div className="container mx-auto px-6">
               <h2 id="gallery-title" className="text-3xl font-semibold mb-6">Galería</h2>
               <Gallery />
