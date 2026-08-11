@@ -1,9 +1,27 @@
 import React from 'react'
 import { STUDIO } from '../data/studio'
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import L from 'leaflet'
+import 'leaflet/dist/leaflet.css'
+import markerIcon2x from 'leaflet/dist/images/marker-icon-2x.png'
+import markerIcon from 'leaflet/dist/images/marker-icon.png'
+import markerShadow from 'leaflet/dist/images/marker-shadow.png'
+
+const customMarkerIcon = new L.Icon({
+  iconRetinaUrl: markerIcon2x,
+  iconUrl: markerIcon,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  tooltipAnchor: [16, -28],
+  shadowSize: [41, 41]
+})
 
 export default function Location() {
-  const mapsQuery = encodeURIComponent(STUDIO.address.full)
-  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
+  const addressQuery = encodeURIComponent(STUDIO.address.full)
+  const coordsQuery = STUDIO.coords ? `${STUDIO.coords.lat},${STUDIO.coords.lng}` : STUDIO.address.full
+  const mapsUrl = STUDIO.mapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(coordsQuery)}`
   return (
     <div className="grid md:grid-cols-2 gap-6 items-stretch">
       <div className="card p-6 h-full">
@@ -32,7 +50,26 @@ export default function Location() {
       </div>
 
       <div className="card overflow-hidden h-full">
-        <iframe title="Mapa" src={`https://maps.google.com/maps?q=${mapsQuery}&output=embed`} className="w-full h-full border-0" loading="lazy"></iframe>
+
+        {STUDIO.coords ? (
+          <MapContainer center={[STUDIO.coords.lat, STUDIO.coords.lng]} zoom={17} scrollWheelZoom={false} className="w-full h-full">
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[STUDIO.coords.lat, STUDIO.coords.lng]} icon={customMarkerIcon}>
+              <Popup>
+                <div>
+                  <strong>{STUDIO.name}</strong>
+                  <br />
+                  <a href={mapsUrl} target="_blank" rel="noopener noreferrer" className="text-neonpink">Abrir en Google Maps</a>
+                </div>
+              </Popup>
+            </Marker>
+          </MapContainer>
+        ) : (
+          <iframe title="Mapa" src={`https://maps.google.com/maps?q=${encodeURIComponent(coordsQuery)}&z=17&output=embed`} className="w-full h-full border-0" loading="lazy"></iframe>
+        )}
       </div>
     </div>
   )
