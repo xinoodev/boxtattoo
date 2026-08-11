@@ -28,5 +28,9 @@ export const STUDIO = {
     }
   ],
   instagram: 'INSTAGRAM_URL',
-  domain: 'https://STUDIO_DOMAIN'
+  domain: 'https://STUDIO_DOMAIN',
+  webAuthor: {
+    name: '@xinodev',
+    url: 'https://www.instagram.com/xinodev'
+  }
 }

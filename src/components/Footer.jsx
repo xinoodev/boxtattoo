@@ -26,6 +26,16 @@ export default function Footer() {
         <div className="mt-8 text-neutral-500 text-sm">
           <p>Política de privacidad · Política de cookies · Aviso legal</p>
           <p className="mt-4">© {new Date().getFullYear()} {STUDIO.name}. Todos los derechos reservados.</p>
+          {STUDIO.webAuthor?.name && (
+            <p className="mt-2 text-neutral-400 text-xs">
+              Diseñado y desarrollado por{' '}
+              {STUDIO.webAuthor.url ? (
+                <a href={STUDIO.webAuthor.url} target="_blank" rel="noopener noreferrer" className="text-neonpink hover:underline">{STUDIO.webAuthor.name}</a>
+              ) : (
+                <span className="text-neutral-400">{STUDIO.webAuthor.name}</span>
+              )}
+            </p>
+          )}
         </div>
       </div>
     </footer>
