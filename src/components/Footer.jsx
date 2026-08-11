@@ -10,7 +10,6 @@ export default function Footer() {
             <h3 className="text-lg font-semibold">{STUDIO.name}</h3>
             <p className="text-neutral-400">{STUDIO.address.full}</p>
             <p className="text-neutral-400 mt-2">Tel: <a href={`tel:${STUDIO.phone}`} className="text-neonpink">{STUDIO.phone}</a></p>
-            <p className="text-neutral-400">Email: <a href={`mailto:${STUDIO.email}`} className="text-neonpink">{STUDIO.email}</a></p>
           </div>
 
           <div className="mt-6 md:mt-0">

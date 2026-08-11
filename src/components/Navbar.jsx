@@ -11,7 +11,7 @@ export default function Navbar() {
             <rect width="24" height="24" rx="4" fill="#000" opacity="0.2" />
             <path d="M6 18L12 6l6 12" stroke="#ff2fa6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          <span className="font-semibold text-lg neon">{STUDIO.name}</span>
+          <span className="font-semibold text-lg neon">{STUDIO.navBarName}</span>
         </a>
 
         <button className="md:hidden p-2" aria-expanded={open} aria-controls="main-nav" onClick={() => setOpen(!open)}>

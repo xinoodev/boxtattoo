@@ -13,7 +13,7 @@ import SEO from './components/SEO'
 export default function App() {
   return (
     <>
-      <SEO title={`${STUDIO.name} — ${STUDIO.address.city}`} description={STUDIO.tagline} />
+      <SEO title={`${STUDIO.siteTitle} — ${STUDIO.address.city}`} description={STUDIO.tagline} />
       <div className="min-h-screen text-white bg-neutral-900">
         <Navbar />
         <main id="main" className="mt-16">
