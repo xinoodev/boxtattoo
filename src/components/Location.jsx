@@ -5,8 +5,8 @@ export default function Location() {
   const mapsQuery = encodeURIComponent(STUDIO.address.full)
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapsQuery}`
   return (
-    <div className="grid md:grid-cols-2 gap-6 items-start">
-      <div className="card p-6">
+    <div className="grid md:grid-cols-2 gap-6 items-stretch">
+      <div className="card p-6 h-full">
         <h3 className="text-xl font-semibold">Dirección</h3>
         <p className="mt-2 text-neutral-200">{STUDIO.address.full}</p>
         <p className="mt-2"><strong>Teléfono:</strong> <a href={`tel:${STUDIO.phone}`} className="text-neonpink hover:underline">{STUDIO.phone}</a></p>
@@ -31,8 +31,8 @@ export default function Location() {
         </div>
       </div>
 
-      <div className="card overflow-hidden">
-        <iframe title="Mapa" src={`https://maps.google.com/maps?q=${mapsQuery}&output=embed`} className="w-full h-64 border-0" loading="lazy"></iframe>
+      <div className="card overflow-hidden h-full">
+        <iframe title="Mapa" src={`https://maps.google.com/maps?q=${mapsQuery}&output=embed`} className="w-full h-full border-0" loading="lazy"></iframe>
       </div>
     </div>
   )
