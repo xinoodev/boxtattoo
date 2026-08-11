@@ -2,6 +2,17 @@ import React from 'react'
 import { STUDIO } from '../data/studio'
 
 export default function Footer() {
+  const handleScroll = (e, id) => {
+    e.preventDefault()
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+    history.replaceState(null, '', window.location.pathname + window.location.search)
+  }
+
   return (
     <footer className="bg-neutral-900 border-t border-neutral-800 mt-12">
       <div className="container mx-auto px-6 py-10">
@@ -15,10 +26,10 @@ export default function Footer() {
           <div className="mt-6 md:mt-0">
             <h4 className="font-medium mb-2">Enlaces</h4>
             <ul className="text-neutral-400">
-              <li><a href="#hero" className="hover:underline">Inicio</a></li>
-              <li><a href="#gallery" className="hover:underline">Galería</a></li>
-              <li><a href="#studio" className="hover:underline">Estudio</a></li>
-              <li><a href="#artists" className="hover:underline">Tatuadores</a></li>
+              <li><a href="#hero" onClick={(e) => handleScroll(e, 'hero')} className="hover:underline">Inicio</a></li>
+              <li><a href="#gallery" onClick={(e) => handleScroll(e, 'gallery')} className="hover:underline">Galería</a></li>
+              <li><a href="#studio" onClick={(e) => handleScroll(e, 'studio')} className="hover:underline">Estudio</a></li>
+              <li><a href="#artists" onClick={(e) => handleScroll(e, 'artists')} className="hover:underline">Tatuadores</a></li>
             </ul>
           </div>
         </div>

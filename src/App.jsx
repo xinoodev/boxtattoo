@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import Gallery from './components/Gallery'
@@ -11,6 +11,11 @@ import { STUDIO } from './data/studio'
 import SEO from './components/SEO'
 
 export default function App() {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search)
+    }
+  }, [])
   return (
     <>
       <SEO title={`${STUDIO.siteTitle} — ${STUDIO.address.city}`} description={STUDIO.tagline} />
